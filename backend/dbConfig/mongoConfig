@@ -1,0 +1,8 @@
+const mongoose = require('mongoose');
+
+function mongodb(){
+    mongoose.connect('mongodb+srv://rahi:Bm6JaSWqTNUaJhCY@cluster0.skerrfb.mongodb.net/ecommerce?retryWrites=true&w=majority')
+      .then(() => console.log('Connected!'));
+}
+
+module.exports = mongodb
