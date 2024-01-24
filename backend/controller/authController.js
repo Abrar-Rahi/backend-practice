@@ -16,15 +16,15 @@ let createAnimalController = async (req,res)=>{
         if(existingEmail.length >0){
             res.send({error:"you have already an account please login"})
         }else{
-            bcrypt.hash(password, 10,async function(err, hash) {
+            bcrypt.hash(password, 10, async function(err, hash) {
                 let animal =  {
                     name:name,
                     email:email,
-                    password: hash
+                    password:hash
                 }
                 let reg = new AnimalSchema(animal)
                 reg.save()
-   
+
                 const transporter = nodemailer.createTransport({
                     service: "gmail",
                     auth: {
@@ -36,9 +36,9 @@ let createAnimalController = async (req,res)=>{
                 
                 const info = await transporter.sendMail({
                     from: 'rahiabrar177@gmail.com', // sender address
-                    to: "abrarmern2204@gmail.com", // list of receivers
+                    to: reg.email , // list of receivers
                     subject: "Hello ✔", // Subject line
-                    html: "<b>Hello world?</b>", // html body
+                    html: `<h1>hey ${reg.name}! this is creative it institute. thanks for login our website<h4>for your kind information</h4><p>our social media link</p><a href="https://www.facebook.com/"><img style="width:50px" src="https://i.ibb.co/fkkBjx5/download.jpg" alt="download"></a><a href="https://www.youtube.com/?app=desktop&gl=BD"><img style="width:50px" src="https://i.ibb.co/fSS3h82/red-youtube-logo-social-media-logo-197792-1803.jpg" alt="red-youtube-logo-social-media-logo-197792-1803"></a><a href="https://www.facebook.com/"><img style="width:50px" src="https://i.ibb.co/fkkBjx5/download.jpg" alt="download"></a><a href="https://www.youtube.com/?app=desktop&gl=BD"><img style="width:50px" src="https://i.ibb.co/fSS3h82/red-youtube-logo-social-media-logo-197792-1803.jpg" alt="red-youtube-logo-social-media-logo-197792-1803"></a>`, // html body
                 });
 
                   res.send({success:"data successfully send"})
@@ -57,3 +57,4 @@ module.exports = {createAnimalController}
 
 
 // rped cyms myyx qyey
+

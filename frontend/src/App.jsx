@@ -69,7 +69,7 @@ function App() {
       <Input />
     </Form.Item>
     <Form.Item
-      label="email"
+      label="Email"
       name="email"
       // rules={[
       //   {
